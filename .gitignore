@@ -34,4 +34,7 @@ sysinfo.txt
 
 # Builds
 *.apk
-*.unitypackage
+*.unitypackag
+
+
+Assets/PathCreator/*
