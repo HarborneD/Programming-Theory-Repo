@@ -1,5 +1,97 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1309480551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1309480552}
+  m_Layer: 0
+  m_Name: Muzzle 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1309480552
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309480551}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.75, y: -0.35, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1606887109}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1606887108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1606887109}
+  m_Layer: 0
+  m_Name: EnemyLasers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1606887109
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606887108}
+  m_LocalRotation: {x: -0.08227555, y: 0, z: -0, w: 0.9966096}
+  m_LocalPosition: {x: 0, y: 1.843, z: 0.026}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1953896823}
+  - {fileID: 1309480552}
+  m_Father: {fileID: 7286203460112919054}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1953896822
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1953896823}
+  m_Layer: 0
+  m_Name: Muzzle 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1953896823
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953896822}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.75, y: -0.35, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1606887109}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7286203460112919052
 GameObject:
   m_ObjectHideFlags: 0
@@ -15,6 +107,7 @@ GameObject:
   - component: {fileID: 7286203460112919040}
   - component: {fileID: 4520395151366943020}
   - component: {fileID: 1802650721187865126}
+  - component: {fileID: 2042866690}
   m_Layer: 0
   m_Name: LaserEnemy
   m_TagString: Untagged
@@ -29,11 +122,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7286203460112919052}
-  m_LocalRotation: {x: 0.08227555, y: -0, z: -0, w: 0.9966096}
+  m_LocalRotation: {x: 0.08227773, y: 0, z: 0, w: 0.9966095}
   m_LocalPosition: {x: 2.603046, y: 24.105503, z: -13.76709}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7626292461640048350}
+  - {fileID: 1606887109}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 9.439, y: 0, z: 0}
@@ -52,6 +146,10 @@ MonoBehaviour:
   _maxHp: 30
   _maxShield: 0
   pathFollower: {fileID: 7286203460112919055}
+  state: 0
+  attackDistancealongPath: 0.5
+  speedAfterAttack: 150
+  aimAheadMagnitude: 9
 --- !u!114 &7286203460112919055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,6 +165,9 @@ MonoBehaviour:
   rotationToPathNomal: {x: 0, y: 0, z: 0}
   positionOffsetToPath: {x: 0, y: 0, z: 0}
   pathCreator: {fileID: 0}
+  endOfPath:
+    m_PersistentCalls:
+      m_Calls: []
   endOfPathInstruction: 0
   speed: 55
 --- !u!54 &7286203460112919041
@@ -127,6 +228,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 90de326af62a75d43bcaff3421969121, type: 3}
+--- !u!114 &2042866690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7286203460112919052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4848e68e22eca7a4583b014571bb48b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  muzzles:
+  - {fileID: 1953896822}
+  - {fileID: 1309480551}
+  projectilePrefab: {fileID: 5627622870350246512, guid: 7816fcff403518a49b6d5c2bee6eba59, type: 3}
+  shotsPerSecond: 5
 --- !u!1001 &7626292461640172632
 PrefabInstance:
   m_ObjectHideFlags: 0

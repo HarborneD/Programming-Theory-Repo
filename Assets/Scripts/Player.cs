@@ -78,4 +78,23 @@ public class Player : ThingWithHp
         }
 
     }
+
+    protected void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Projectile"))
+        {
+            Projectile projectile = collision.gameObject.GetComponent<Projectile>();
+
+            TakeDamage(projectile.damage);
+            projectile.HandleHit();
+
+            Debug.Log("Player Health: " + currentHp);
+        }
+    }
+
+    public override void Handle0Hp()
+    {
+        speed = 0;
+        Debug.Log("Game Over");
+    }
 }

@@ -1923,6 +1923,8 @@ GameObject:
   m_Component:
   - component: {fileID: 868077359}
   - component: {fileID: 868077361}
+  - component: {fileID: 868077360}
+  - component: {fileID: 868077362}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1946,6 +1948,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!54 &868077360
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868077358}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &868077361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1965,6 +1983,19 @@ MonoBehaviour:
   damagedFire: {fileID: 692143455}
   endOfPathInstruction: 0
   speed: 30
+--- !u!65 &868077362
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868077358}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.8689973, y: 1.3058172, z: 5.084233}
+  m_Center: {x: 0.11366165, y: 0.15290862, z: -0.05397582}
 --- !u!1001 &960161569
 PrefabInstance:
   m_ObjectHideFlags: 0

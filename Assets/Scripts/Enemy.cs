@@ -10,8 +10,12 @@ public class Enemy : ThingWithHpAndShield
 
     public AiState state;
 
+    protected GameObject player;
+
     protected override void Start()
     {
+        player = GameObject.Find("Player");
+
         base.Start();
     }
 

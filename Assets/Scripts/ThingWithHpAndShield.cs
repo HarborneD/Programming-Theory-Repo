@@ -17,8 +17,6 @@ public class ThingWithHpAndShield : ThingWithHp
         base.Start();
         maxShield = _maxShield;
         currentShield = maxShield;
-
-        
     }
 
     // Update is called once per frame
@@ -29,8 +27,6 @@ public class ThingWithHpAndShield : ThingWithHp
 
     public override void TakeDamage(int damage)
     {
-        Debug.Log(currentShield);
-        Debug.Log(currentHp);
         int shieldDamage = Mathf.Min(damage, currentShield);
         int hpDamage = damage - shieldDamage;
 
