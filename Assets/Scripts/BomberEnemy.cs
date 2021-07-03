@@ -4,28 +4,67 @@ using UnityEngine;
 
 public class BomberEnemy : Enemy
 {
-    // Start is called before the first frame update
+    [SerializeField] float attackDistanceAlongPath = 0.25f;
+    [SerializeField] float hoverBeforeAttackLength = 1f;
+    [SerializeField] float hoverAfterAttackLength = 1f;
+
+    bool hasAttacked = false;
+    float endHoveringTime;
+
+
     protected override void Start()
     {
         base.Start();
+
+        pathFollower.endOfPath.AddListener(HandleFlightPathStart);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
 
-    private void OnCollisionEnter(Collision collision)
+    protected override void HandleMovement()
     {
-        Debug.Log("Collision");
-        if (collision.gameObject.CompareTag("Projectile"))
+        base.HandleMovement();
+        switch (state)
         {
-            Debug.Log("Hit");
-            Projectile projectile = collision.gameObject.GetComponent<Projectile>();
+            case AiState.flyby:
+                if(!hasAttacked && pathFollower.distanceTravelledRatio >= attackDistanceAlongPath)
+                {
+                    endHoveringTime = Time.time + hoverBeforeAttackLength;
+                    state = AiState.hovering;
+                    pathFollower.speed = 0;
+                    
+                }
+                break;
 
-            TakeDamage(projectile.damage);
-            projectile.HandleHit();
+
+            case AiState.hovering:
+                if (Time.time >= endHoveringTime)
+                {
+                    state = hasAttacked ? AiState.flyby :  AiState.attacking;
+                    if(state == AiState.flyby)
+                    {
+                        pathFollower.speed = 55;
+                    }
+                    
+                }
+                break;
+
+
+            case AiState.attacking:
+                state = AiState.hovering;
+                hasAttacked = true;
+                endHoveringTime = Time.time + hoverAfterAttackLength;
+                Attack();
+                break;
         }
     }
 
+    protected void HandleFlightPathStart()
+    {
+        hasAttacked = false;
+    }
+
+    protected override void Attack()
+    {
+        Debug.Log("Bomber Attack");
+    }
 }

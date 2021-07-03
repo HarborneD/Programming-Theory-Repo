@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
+using UnityEngine.Events;
 
 public class PathFollower : MonoBehaviour
 {
@@ -13,10 +14,12 @@ public class PathFollower : MonoBehaviour
 
     public PathCreator pathCreator;
 
+    public UnityEvent endOfPath;
+
     public EndOfPathInstruction endOfPathInstruction;
     public float speed = 5;
-
-    float distanceTravelled;
+    public float distanceTravelled { get; private set; }
+    public float distanceTravelledRatio => distanceTravelled / pathCreator.path.length;
 
     private void Update()
     {
@@ -28,6 +31,11 @@ public class PathFollower : MonoBehaviour
         if (pathCreator != null)
         {
             distanceTravelled += speed * Time.deltaTime;
+            if(distanceTravelledRatio >= 1 | distanceTravelled < 0)
+            {
+                distanceTravelled %= pathCreator.path.length;
+                endOfPath.Invoke();
+            }
             transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
             transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
             Vector3 localEulerTemp = transform.localEulerAngles;
