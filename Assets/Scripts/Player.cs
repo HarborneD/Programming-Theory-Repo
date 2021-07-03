@@ -3,24 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
 
-public class Player : MonoBehaviour
+public class Player : ThingWithHp
 {
-    [SerializeField]
-    Vector3 rotationToRoadNomal;
+    [SerializeField] Vector3 rotationToRoadNomal;
 
-    [SerializeField]
-    Vector3 positionOffsetToRoadPath;
+    [SerializeField] Vector3 positionOffsetToRoadPath;
 
-    [SerializeField]
-    PathCreator pathCreator;
+    [SerializeField] PathCreator pathCreator;
+
+    [SerializeField] ParticleSystem damagedFire;
 
     public EndOfPathInstruction endOfPathInstruction;
     public float speed = 5;
     
     float distanceTravelled;
 
-    void Start()
+    
+    protected override void Start()
     {
+        base.Start();
+
+        Cursor.visible = false;
+
         if (pathCreator != null)
         {
             SetDistanceTravelledToCurrentLocation();
@@ -62,5 +66,16 @@ public class Player : MonoBehaviour
     void SetDistanceTravelledToCurrentLocation()
     {
         distanceTravelled = pathCreator.path.GetClosestDistanceAlongPath(transform.position);
+    }
+
+    public override void TakeDamage(int damage)
+    {
+        base.TakeDamage(damage);
+
+        if(currentHp / maxHp <= 0.25)
+        {
+            damagedFire.Play();
+        }
+
     }
 }

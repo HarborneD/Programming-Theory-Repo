@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PathCreation;
 
-public class Enemy : MonoBehaviour
+[RequireComponent(typeof(PathFollower))]
+public class Enemy : ThingWithHpAndShield
 {
-    // Start is called before the first frame update
-    void Start()
+    PathFollower pathFollower;
+
+
+    protected override void Start()
     {
-        
+        base.Start();
+    
+        pathFollower = GetComponent<PathFollower>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
     }
 }

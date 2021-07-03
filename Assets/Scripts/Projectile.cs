@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField] ParticleSystem hitParticles;
+    public int damage { get; private set; } = 10;
     float travelSpeed = 300f;
     Vector3 shootDirection;
 
@@ -23,5 +25,11 @@ public class Projectile : MonoBehaviour
     public void FireInDirection(Vector3 direction)
     {
         shootDirection = direction;
+    }
+
+    public void HandleHit()
+    {
+        hitParticles.Play();
+        Destroy(gameObject, 0.5f);
     }
 }
