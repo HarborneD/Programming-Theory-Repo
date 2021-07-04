@@ -12,6 +12,9 @@ public class EnemySpawnManager : MonoBehaviour
     List<PathCreator> spawnPaths = new List<PathCreator>();
 
     [SerializeField]
+    public List<PathCreator> rocketPaths = new List<PathCreator>();
+
+    [SerializeField]
     GameObject laserEnemeyPrefab;
     [SerializeField]
     GameObject rocketEnemeyPrefab;
@@ -29,7 +32,7 @@ public class EnemySpawnManager : MonoBehaviour
         SpawnEnemy(0, laserEnemeyPrefab);
         SpawnEnemy(3, rocketEnemeyPrefab);
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -50,6 +53,7 @@ public class EnemySpawnManager : MonoBehaviour
 
         GameObject enemyObject = Instantiate(vehiclePrefab, spawnLocation, Quaternion.identity);
         enemyObject.GetComponent<Enemy>().pathFollower.pathCreator = spawnPaths[pathIndex];
+        enemyObject.GetComponent<Enemy>().spawnManager = this;
     }
 
     void SpawnEnemyOnRandomPath(GameObject vehiclePrefab)

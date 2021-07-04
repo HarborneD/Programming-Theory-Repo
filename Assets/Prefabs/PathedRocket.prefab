@@ -9,10 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4038542789211186778}
-  - component: {fileID: 6081024794793811383}
   - component: {fileID: -7810016879914063446}
+  - component: {fileID: 6438941860784688308}
+  - component: {fileID: -8236309588133032947}
   m_Layer: 0
-  m_Name: Rocket
+  m_Name: PathedRocket
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,22 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6081024794793811383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4038542789211186773}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfe6021bf25ca7e4bb61a09f809527b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitParticles: {fileID: 9211796959925684928}
-  _damage: 30
-  meshObject: {fileID: 4039048688482009102}
-  travelSpeed: 60
 --- !u!54 &-7810016879914063446
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -67,6 +52,45 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6438941860784688308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4038542789211186773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5371a6227441ee049ab0282460dbad99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minProgressTowardsTargetMovePosition: 1
+  maxProgressTowardsTargetMovePosition: 1
+  rotationToPathNomal: {x: 0, y: 0, z: 0}
+  positionOffsetToPath: {x: 0, y: 0, z: 0}
+  pathCreator: {fileID: 0}
+  endOfPath:
+    m_PersistentCalls:
+      m_Calls: []
+  endOfPathInstruction: 2
+  speed: 25
+--- !u!114 &-8236309588133032947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4038542789211186773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a976edeb6f11b46af7d9aebdec5b32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitParticles: {fileID: 9211796959925684928}
+  _damage: 25
+  meshObject: {fileID: 4039048688482009102}
+  travelSpeed: 10
+  pathFollower: {fileID: 6438941860784688308}
 --- !u!65 &2920883121692684587
 BoxCollider:
   m_ObjectHideFlags: 0

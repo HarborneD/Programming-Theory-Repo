@@ -23,4 +23,15 @@ public class Rocket : Projectile
     {
         shootDirection = (target.transform.position - transform.position).normalized;
     }
+
+    protected void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Projectile"))
+        {
+            Projectile projectile = collision.gameObject.GetComponent<Projectile>();
+
+            projectile.HandleHit();
+            HandleHit();
+        }
+    }
 }

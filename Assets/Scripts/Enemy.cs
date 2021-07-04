@@ -11,6 +11,7 @@ public class Enemy : ThingWithHpAndShield
     public AiState state;
 
     protected GameObject player;
+    public EnemySpawnManager spawnManager;
 
     protected override void Start()
     {

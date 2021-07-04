@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviour
         shootDirection = direction;
     }
 
-    public void HandleHit()
+    public virtual void HandleHit()
     {
         Destroy(meshObject);
         hitParticles.Play();
