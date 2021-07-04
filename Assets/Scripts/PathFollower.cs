@@ -7,6 +7,11 @@ using UnityEngine.Events;
 public class PathFollower : MonoBehaviour
 {
     [SerializeField]
+    float minProgressTowardsTargetMovePosition = 1f;
+    [SerializeField]
+    float maxProgressTowardsTargetMovePosition = 1f;
+
+    [SerializeField]
     Vector3 rotationToPathNomal;
 
     [SerializeField]
@@ -36,7 +41,7 @@ public class PathFollower : MonoBehaviour
                 distanceTravelled %= pathCreator.path.length;
                 endOfPath.Invoke();
             }
-            transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
+            transform.position = Vector3.Lerp(transform.position, pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction), Random.Range(minProgressTowardsTargetMovePosition, maxProgressTowardsTargetMovePosition));
             transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
             Vector3 localEulerTemp = transform.localEulerAngles;
             localEulerTemp += rotationToPathNomal;

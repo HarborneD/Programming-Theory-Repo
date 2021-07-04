@@ -62,6 +62,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitParticles: {fileID: 198357974448554897}
+  _damage: 10
+  meshObject: {fileID: 5627622870230074654}
+  travelSpeed: 300
 --- !u!54 &7590817138170763447
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -274,6 +277,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11530f2b0a0cd2442949827ecbb622f2, type: 3}
+--- !u!1 &5627622870230074654 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 122648, guid: 11530f2b0a0cd2442949827ecbb622f2, type: 3}
+  m_PrefabInstance: {fileID: 5627622870229998086}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5627622870229908830 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 436056, guid: 11530f2b0a0cd2442949827ecbb622f2, type: 3}

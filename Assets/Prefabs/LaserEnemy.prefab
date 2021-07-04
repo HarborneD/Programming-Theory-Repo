@@ -148,7 +148,7 @@ MonoBehaviour:
   pathFollower: {fileID: 7286203460112919055}
   state: 0
   attackDistancealongPath: 0.5
-  speedAfterAttack: 150
+  speedAfterAttack: 100
   aimAheadMagnitude: 9
 --- !u!114 &7286203460112919055
 MonoBehaviour:
@@ -162,6 +162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5371a6227441ee049ab0282460dbad99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minProgressTowardsTargetMovePosition: 1
+  maxProgressTowardsTargetMovePosition: 1
   rotationToPathNomal: {x: 0, y: 0, z: 0}
   positionOffsetToPath: {x: 0, y: 0, z: 0}
   pathCreator: {fileID: 0}

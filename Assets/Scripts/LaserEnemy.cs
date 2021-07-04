@@ -56,8 +56,6 @@ public class LaserEnemy : Enemy
 
     protected override void Attack()
     {
-        Debug.Log("Laser Attack");
-
         lazer.MoveAim(player.transform.position + player.transform.forward.normalized * aimAheadMagnitude);
         lazer.FireGun();
     }

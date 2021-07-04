@@ -1076,9 +1076,37 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198368796621386640, guid: c590b17884b119046bc6412066500b7d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198368796621386640, guid: c590b17884b119046bc6412066500b7d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.052954715
+      objectReference: {fileID: 0}
+    - target: {fileID: 198368796621386640, guid: c590b17884b119046bc6412066500b7d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.773297
+      objectReference: {fileID: 0}
+    - target: {fileID: 198368796621386640, guid: c590b17884b119046bc6412066500b7d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.990566
+      objectReference: {fileID: 0}
     - target: {fileID: 198401977771408020, guid: c590b17884b119046bc6412066500b7d, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198401977771408020, guid: c590b17884b119046bc6412066500b7d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.052954715
+      objectReference: {fileID: 0}
+    - target: {fileID: 198401977771408020, guid: c590b17884b119046bc6412066500b7d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.773297
+      objectReference: {fileID: 0}
+    - target: {fileID: 198401977771408020, guid: c590b17884b119046bc6412066500b7d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.990566
       objectReference: {fileID: 0}
     - target: {fileID: 198464741691905212, guid: c590b17884b119046bc6412066500b7d, type: 3}
       propertyPath: playOnAwake
@@ -1091,6 +1119,18 @@ PrefabInstance:
     - target: {fileID: 198696392922457284, guid: c590b17884b119046bc6412066500b7d, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198696392922457284, guid: c590b17884b119046bc6412066500b7d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.37254906
+      objectReference: {fileID: 0}
+    - target: {fileID: 198696392922457284, guid: c590b17884b119046bc6412066500b7d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.744426
+      objectReference: {fileID: 0}
+    - target: {fileID: 198696392922457284, guid: c590b17884b119046bc6412066500b7d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 199011672764196750, guid: c590b17884b119046bc6412066500b7d, type: 3}
       propertyPath: m_Materials.Array.size
@@ -1976,7 +2016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b27b21aedeb4d143bfd4f7d1d869846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHp: 50
+  _maxHp: 100
   rotationToRoadNomal: {x: 0, y: 0, z: 90}
   positionOffsetToRoadPath: {x: -2.5, y: 1, z: 0}
   pathCreator: {fileID: 695003225}
