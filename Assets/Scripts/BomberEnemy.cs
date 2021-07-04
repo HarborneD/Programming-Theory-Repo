@@ -68,6 +68,8 @@ public class BomberEnemy : Enemy
     protected void HandleFlightPathStart()
     {
         hasAttacked = false;
+        currentShield = maxShield;
+        healthUi.UpdateShields(currentShield, maxShield);
     }
 
     protected override void Attack()

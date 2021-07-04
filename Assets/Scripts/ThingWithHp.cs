@@ -5,6 +5,9 @@ using UnityEngine;
 public class ThingWithHp : MonoBehaviour
 {
     [SerializeField]
+    protected HealthUi healthUi;
+
+    [SerializeField]
     protected int _maxHp;
     public int maxHp { get; protected set; }
 
@@ -16,6 +19,7 @@ public class ThingWithHp : MonoBehaviour
     {
         maxHp = _maxHp;
         currentHp = maxHp;
+        healthUi.UpdateHealth(currentHp, maxHp);
     }
 
     public virtual void TakeDamage(int damage)
@@ -25,6 +29,8 @@ public class ThingWithHp : MonoBehaviour
         {
             Handle0Hp();
         }
+
+        healthUi.UpdateHealth(currentHp, maxHp);
     }
 
     public virtual void Handle0Hp()

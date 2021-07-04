@@ -26,6 +26,16 @@ public class PathFollower : MonoBehaviour
     public float distanceTravelled { get; private set; }
     public float distanceTravelledRatio => distanceTravelled / pathCreator.path.length;
 
+    private void Start()
+    {
+        if (pathCreator != null)
+        {
+            SetDistanceTravelledToCurrentLocation();
+            // Subscribed to the pathUpdated event so that we're notified if the path changes during the game
+            pathCreator.pathUpdated += OnPathChanged;
+        }
+    }
+
     private void Update()
     {
         MoveAlongPath();
@@ -50,6 +60,10 @@ public class PathFollower : MonoBehaviour
             Vector3 worldOffset = transform.rotation * positionOffsetToPath;
             transform.position += worldOffset;
         }
+    }
+    void OnPathChanged()
+    {
+        SetDistanceTravelledToCurrentLocation();
     }
 
     void SetDistanceTravelledToCurrentLocation()
