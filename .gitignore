@@ -3,6 +3,7 @@
 [Oo]bj/
 [Bb]uild/
 [Bb]uilds/
+Logs/*
 Assets/AssetStoreTools*
 
 # Visual Studio cache directory
@@ -41,3 +42,7 @@ Assets/PathCreator/*
 Assets/TextMesh Pro/*
 Assets/WZ PAK/*
 Assets/VolumetricLines/*
+Assets/Hovl Studio/*
+Assets/PopupAsylum/*
+Assets/AurynSky/*
+Assets/FireExplosionVFX/*
