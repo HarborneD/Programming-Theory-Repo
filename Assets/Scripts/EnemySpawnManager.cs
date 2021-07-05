@@ -5,19 +5,14 @@ using PathCreation;
 
 public class EnemySpawnManager : MonoBehaviour
 {
-    [SerializeField]
-    GameObject player;
+    [SerializeField] GameManager gameManager;
+    [SerializeField] GameObject player;
 
-    [SerializeField]
-    List<PathCreator> spawnPaths = new List<PathCreator>();
+    [SerializeField] List<PathCreator> spawnPaths = new List<PathCreator>();
+    [SerializeField] public List<PathCreator> rocketPaths = new List<PathCreator>();
 
-    [SerializeField]
-    public List<PathCreator> rocketPaths = new List<PathCreator>();
-
-    [SerializeField]
-    GameObject laserEnemeyPrefab;
-    [SerializeField]
-    GameObject rocketEnemeyPrefab;
+    [SerializeField] GameObject laserEnemeyPrefab;
+    [SerializeField] GameObject rocketEnemeyPrefab;
 
     Dictionary<EnemyType, GameObject> enemyTypePrefabLookup = new Dictionary<EnemyType, GameObject>();
 
@@ -54,6 +49,7 @@ public class EnemySpawnManager : MonoBehaviour
         GameObject enemyObject = Instantiate(vehiclePrefab, spawnLocation, Quaternion.identity);
         enemyObject.GetComponent<Enemy>().pathFollower.pathCreator = spawnPaths[pathIndex];
         enemyObject.GetComponent<Enemy>().spawnManager = this;
+        enemyObject.GetComponent<Enemy>().gameManager = gameManager;
     }
 
     void SpawnEnemyOnRandomPath(GameObject vehiclePrefab)

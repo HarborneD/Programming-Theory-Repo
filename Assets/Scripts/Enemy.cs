@@ -6,6 +6,9 @@ using PathCreation;
 [RequireComponent(typeof(PathFollower))]
 public class Enemy : ThingWithHpAndShield
 {
+    public GameManager gameManager;
+    [SerializeField] int scoreValue;
+
     public PathFollower pathFollower;
 
     public AiState state;
@@ -46,8 +49,12 @@ public class Enemy : ThingWithHpAndShield
 
     }
 
+    public override void Handle0Hp()
+    {
+        gameManager.AddToScore(scoreValue);
+        base.Handle0Hp();
+    }
 
-    
 }
 
 public enum AiState

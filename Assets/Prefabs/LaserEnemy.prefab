@@ -527,6 +527,8 @@ MonoBehaviour:
   healthUi: {fileID: 1194343284}
   _maxHp: 30
   _maxShield: 0
+  gameManager: {fileID: 0}
+  scoreValue: 10
   pathFollower: {fileID: 7286203460112919055}
   state: 0
   spawnManager: {fileID: 0}
