@@ -23,14 +23,14 @@ public class PathFollower : MonoBehaviour
 
     public EndOfPathInstruction endOfPathInstruction;
     public float speed = 5;
-    public float distanceTravelled { get; private set; }
+    public float distanceTravelled { get; private set; } = 0;
     public float distanceTravelledRatio => distanceTravelled / pathCreator.path.length;
 
     private void Start()
     {
         if (pathCreator != null)
         {
-            SetDistanceTravelledToCurrentLocation();
+            //SetDistanceTravelledToCurrentLocation();
             // Subscribed to the pathUpdated event so that we're notified if the path changes during the game
             pathCreator.pathUpdated += OnPathChanged;
         }

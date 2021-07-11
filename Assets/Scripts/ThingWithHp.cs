@@ -9,6 +9,7 @@ public class ThingWithHp : MonoBehaviour
 
     [SerializeField]
     protected int _maxHp;
+
     public int maxHp { get; protected set; }
 
     public int currentHp { get; protected set; }

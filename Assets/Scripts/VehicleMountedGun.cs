@@ -26,6 +26,8 @@ public class VehicleMountedGun : MonoBehaviour
     [SerializeField]
     float shotsPerSecond = 5;
 
+    [SerializeField] ThingWithHp thingAttachedTo;
+
     float secondsPerShot;
     float nextShotTimestamp;
     
@@ -39,9 +41,12 @@ public class VehicleMountedGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveAim();
-        MoveGunTowardsAim();
-        CheckForShootInputAndShoot();
+        if (thingAttachedTo.currentHp > 0)
+        {
+            MoveAim();
+            MoveGunTowardsAim();
+            CheckForShootInputAndShoot();
+        }
     }
 
     void MoveGunTowardsAim()

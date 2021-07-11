@@ -11,7 +11,7 @@ public class Enemy : ThingWithHpAndShield
 
     public PathFollower pathFollower;
 
-    public AiState state;
+    public AiState state = AiState.flyby;
 
     protected GameObject player;
     public EnemySpawnManager spawnManager;

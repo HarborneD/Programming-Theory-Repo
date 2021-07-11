@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
+using System.Linq;
 
 public class EnemySpawnManager : MonoBehaviour
 {
@@ -14,8 +15,11 @@ public class EnemySpawnManager : MonoBehaviour
     [SerializeField] GameObject laserEnemeyPrefab;
     [SerializeField] GameObject rocketEnemeyPrefab;
 
-    Dictionary<EnemyType, GameObject> enemyTypePrefabLookup = new Dictionary<EnemyType, GameObject>();
+    [SerializeField] int numLoopsCompletedToIncreaseEnemyCount = 5;
+    [SerializeField] float spawnRocketChance = 0.3f;
 
+    Dictionary<EnemyType, GameObject> enemyTypePrefabLookup = new Dictionary<EnemyType, GameObject>();
+        
     // Start is called before the first frame update
     void Start()
     {
@@ -24,14 +28,19 @@ public class EnemySpawnManager : MonoBehaviour
 
         //SpawnRandomEnemyOnRandomPath();
 
-        SpawnEnemy(0, laserEnemeyPrefab);
-        SpawnEnemy(3, rocketEnemeyPrefab);
+        //SpawnEnemy(0, laserEnemeyPrefab);
+        //SpawnEnemy(3, rocketEnemeyPrefab);
     }
     
     // Update is called once per frame
     void Update()
     {
         MoveToPlayerTransform();
+
+        if(gameManager.playerAlive && GameObject.FindObjectsOfType<Enemy>().Count() == 0)
+        {
+            SpawnBasedOnLoopCount();
+        }
     }
 
     void MoveToPlayerTransform()
@@ -63,6 +72,35 @@ public class EnemySpawnManager : MonoBehaviour
         EnemyType enemyType = (EnemyType)Random.Range(0, (int)EnemyType.COUNT);
         SpawnEnemyOnRandomPath(enemyTypePrefabLookup[enemyType]);
     }
+
+    void SpawnBasedOnLoopCount()
+    {
+        int maxEnemies = Mathf.Min(4, Mathf.FloorToInt(gameManager.loop / numLoopsCompletedToIncreaseEnemyCount) + 1);
+        int maxRockets = Mathf.Min(4, gameManager.loop % 5);
+        Debug.Log(maxEnemies + " " + maxRockets);
+        List<int> availablePaths = new List<int>();
+        availablePaths.AddRange(Enumerable.Range(0, spawnPaths.Count));
+
+        for (int enemeyIndex = 0; enemeyIndex < maxEnemies; enemeyIndex++)
+        {
+            int pathIndex = Random.Range(0, availablePaths.Count);
+            availablePaths.Remove(pathIndex);
+
+            int numRocketSpawns = 0;
+            float spawnRocketRoll = Random.Range(0f, 1f);
+            Debug.Log(spawnRocketRoll);
+            if (numRocketSpawns < maxRockets && spawnRocketRoll < spawnRocketChance)
+            {
+                SpawnEnemy(pathIndex, rocketEnemeyPrefab);
+            }
+            else
+            {
+                SpawnEnemy(pathIndex, laserEnemeyPrefab);
+            }
+        }
+
+    }
+
 
 
     enum EnemyType

@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
+using UnityEngine.Events;
 
 public class Player : ThingWithHpAndShield
 {
     [SerializeField] ParticleSystem damagedFire;
+
+    public UnityEvent deathEvent;
     
     
     protected override void Start()
@@ -15,6 +18,19 @@ public class Player : ThingWithHpAndShield
         Cursor.visible = false;
 
         GetComponent<PathFollower>().endOfPath.AddListener(HandleRoadPathStart);
+    }
+
+    protected void Update()
+    {
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            foreach(Enemy enemy in GameObject.FindObjectsOfType<Enemy>())
+            {
+                Destroy(enemy.gameObject);
+            }
+        }
+#endif
     }
 
     public override void TakeDamage(int damage)
@@ -44,7 +60,7 @@ public class Player : ThingWithHpAndShield
     public override void Handle0Hp()
     {
         GetComponent<PathFollower>().speed = 0;
-        Debug.Log("Game Over");
+        deathEvent.Invoke();
     }
 
     protected void HandleRoadPathStart()
