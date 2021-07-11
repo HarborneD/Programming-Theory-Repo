@@ -33,6 +33,7 @@ public class Player : ThingWithHpAndShield
 #endif
     }
 
+    // ABSTRACTION
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);

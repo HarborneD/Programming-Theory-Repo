@@ -88,7 +88,6 @@ public class EnemySpawnManager : MonoBehaviour
 
             int numRocketSpawns = 0;
             float spawnRocketRoll = Random.Range(0f, 1f);
-            Debug.Log(spawnRocketRoll);
             if (numRocketSpawns < maxRockets && spawnRocketRoll < spawnRocketChance)
             {
                 SpawnEnemy(pathIndex, rocketEnemeyPrefab);

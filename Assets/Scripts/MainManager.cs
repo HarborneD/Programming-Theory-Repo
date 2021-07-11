@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainManager : MonoBehaviour
 {
+    bool hasStarted = false;
     public MainManager Instance { get; private set; }
     // Start is called before the first frame update
     void Awake()
@@ -22,7 +23,7 @@ public class MainManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKeyDown)
+        if (!hasStarted && Input.anyKeyDown)
         {
             StartGame();
         }
@@ -30,6 +31,7 @@ public class MainManager : MonoBehaviour
 
     void StartGame()
     {
+        hasStarted = true;
         SceneManager.LoadScene(1);
     }
 }

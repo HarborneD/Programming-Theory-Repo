@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
 
+// INHERITANCE
 [RequireComponent(typeof(PathFollower))]
 public class Enemy : ThingWithHpAndShield
 {
@@ -28,6 +29,7 @@ public class Enemy : ThingWithHpAndShield
         HandleMovement();
     }
 
+    // ABSTRACTION
     protected virtual void Attack()
     {
         Debug.Log("Enemy Attack");

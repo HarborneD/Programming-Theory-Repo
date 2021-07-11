@@ -7,7 +7,10 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
+    // ENCAPSULATION
     public int score { get; private set; }
+
+    // ENCAPSULATION
     public int loop { get; private set; } = 1;
 
     [SerializeField] Player player;
@@ -17,6 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Text scoreDisplayText;
     [SerializeField] GameObject gameOverUi;
 
+    // ENCAPSULATION
     public bool playerAlive { get; private set; } = true;
 
 

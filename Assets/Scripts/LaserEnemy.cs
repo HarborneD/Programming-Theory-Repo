@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// INHERITANCE
 public class LaserEnemy : Enemy
 {
     [SerializeField] float attackDistancealongPath = 0.5f;
@@ -24,7 +25,8 @@ public class LaserEnemy : Enemy
         pathFollower.endOfPath.AddListener(HandleFlightPathStart);
 
     }
-
+    
+    // POLYMORPHISM
     protected override void HandleMovement()
     {
         base.HandleMovement();

@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using PathCreation;
 
+// INHERITANCE
 public class BomberEnemy : Enemy
 {
     [SerializeField] float attackDistanceAlongPath = 0.45f;
@@ -26,7 +27,7 @@ public class BomberEnemy : Enemy
         pathFollower.endOfPath.AddListener(HandleFlightPathStart);
     }
 
-
+    // POLYMORPHISM  , ABSTRACTION
     protected override void HandleMovement()
     {
         base.HandleMovement();
@@ -72,12 +73,13 @@ public class BomberEnemy : Enemy
         healthUi.UpdateShields(currentShield, maxShield);
     }
 
+    // ABSTRACTION
     protected override void Attack()
     {
         FireRockets(rocketsToFire);
     }
 
-
+    // ABSTRACTION
     void FireRockets(int numRockets)
     {
         List<Vector3> rocketPathStarts = new List<Vector3>();

@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// INHERITANCE
 public class ThingWithHpAndShield : ThingWithHp
 {
     [SerializeField]
     private int _maxShield;
-    
+
+    // ENCAPSULATION
     public int maxShield { get; protected set; }
 
+    // ENCAPSULATION
     public int currentShield { get; protected set; }
 
     
